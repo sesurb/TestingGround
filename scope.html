@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        //This testvar is global. It is always available to any method or function on this page and sometimes ohter pages.   
+        var testvar = "This is a global variable.";
+         console.log("testvar after global declaration: " + testvar); 
+        function scopetest(testvar){
+            //this testvar is not globabl it is only available inside this function. Once ths function is done all variables in here are wiped from memory.
+            //because this variable has the same name as the global we have a conflict. They are considered 2 separate variables behind the scenes. They are holding 2 separate values. So when you call it precedence takes over and here precedence is local scope so you actually get the variable that is declared in the function returned to you.   
+            console.log("testvar in scopetest: " + testvar);     
+            functionwithinfunction(testvar); 
+        }
+        
+        function functionwithinfunction(newtestvar){
+            console.log("testvar in functionwithinfunction: " + testvar);
+            console.log("newtestvar in functionwithinfunction: " + newtestvar);
+            var testvar = newtestvar
+            console.log("testvar after scope change in functionwithinfunction: " + testvar);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="scopetest('This is called from the button.')">Scope Test</button>
+</body>
+
+</html>

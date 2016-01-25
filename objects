@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    
+</head>
+<body>
+    Name: <span id="dogname"></span><br />
+    Weight: <span id="dogweight"></span><br/>
+    <input id="mealcount" type="text" /><button id="btneat" onclick="dog.eatUserDetermined()">Eat</button>
+
+    
+
+
+
+    <script type="text/javascript">
+
+        
+        //var scoops = 5;
+        //while (scoops > 0) {
+        //    document.write("Another scoop!<br>");
+        //    scoops = scoops - 1;
+        //}
+        //document.write("Life without ice cream isn't the same.")
+
+        var dog = {
+            name: "Rover",
+            weight: 35,
+            eat: function () {
+                this.weight += 2; //We have to use 'this' access the property of the object. Without it run it and check the console for errors.s
+                document.getElementById("dogweight").innerHTML = dog.weight;
+            },
+            eatnumber: function (foodcount) {
+                this.weight += parseInt(foodcount);
+                document.getElementById("dogweight").innerHTML = dog.weight;
+            },
+            eatUserDetermined: function () {
+                var meals = document.getElementById("mealcount").value;
+                this.eatnumber(meals);
+                //document.write(dog.name + " ate " + meals + " meals and now weighs " + dog.weight + " lbs.<br>")
+            }
+        }
+        //document.write("<br><br>")
+        //document.write(dog.name + " is " + dog.weight + " lbs.")
+
+        //document.write("<br><br>")
+
+        //document.write(dog.name + " is eating...<br>")
+        //dog.eat();
+        //document.write(dog.name + " now weighs " + dog.weight + " lbs.<br>")
+
+        //dog.eatnumber(10);
+        //document.write(dog.name + " ate 10 meals...<br>")
+        //document.write(dog.name + " now weighs " + dog.weight + " lbs.<br>")
+
+        //document.write("<br><br>")
+
+        document.getElementById("dogname").innerHTML = dog.name; //If this is in the header it will not show because the span is not available yet.
+        document.getElementById("dogweight").innerHTML = dog.weight;
+    </script>
+</body>
+</html>

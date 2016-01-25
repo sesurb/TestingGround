@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+
+    <script type="text/javascript">
+
+        //Constructor object
+        function appointment(time, place) {
+            this.time = time;
+            this.place = place;
+        }
+
+        var appt = new appointment("5pm","Office");
+
+        document.write("Appointment set for " + appt.time + " at " + appt.place);
+        document.write("<br><br>")
+        var appt2 = new appointment("1pm", "Coffee Shop");
+
+        document.write("Appointment set for " + appt2.time + " at " + appt2.place);
+
+
+        appointment.prototype.flag = null;
+
+        appt.flag = "Urgent!";
+        document.write("<br><br>"+appt.flag+" Appointment set for " + appt.time + " at " + appt.place);
+
+
+        appointment.prototype.with = "Bob";
+
+        document.write("<br><br>" + appt.flag + " Appointment set for " + appt.time + " at " + appt.place + " with " + appt.with);
+
+
+        var names = ["tom", "bill", "mark"];
+        console.log(names[1]);
+
+
+
+
+        var person = function (name) {
+            this.name = name;
+            console.log("person created.")
+        }
+
+        var people = [];
+        for (i = 0; i < names.length; i++) {
+            var p = new person();
+            p.name = names[i];
+            people.push(p);
+        }
+        for (p in people) {
+            console.log(people[p].name)
+        }
+
+
+
+    </script>
+</body>
+</html>
