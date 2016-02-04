@@ -1,0 +1,23 @@
+    <div class="">
+        <div>
+            Filter: <input type="text" ng-model="filtertext" />
+        </div>
+        <table>
+            <tr ng-if="filtertext">
+                <td colspan="3">Current Filter: {{filtertext}}</td>
+            </tr>
+            <tr>
+                <td>NAME</td>
+                <td>TYPE</td>
+                <td>COLOR</td>
+            </tr>
+            <tr ng-repeat="cat in cats | filter:filtertext | orderBy:'name'" ng-class-odd="'oddrow'">
+
+                <td>{{cat.name | uppercase}}</td>
+                <td>{{cat.type}}</td>
+                <td>{{cat.color}}</td>
+            </tr>
+        </table>
+        <br /><br /><br />
+        <a href="#/dogs">Dogs</a>
+    </div>
