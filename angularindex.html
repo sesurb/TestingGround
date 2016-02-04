@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <title></title>
+    <style>
+        .oddrow {
+            background-color: gray;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div>
+       <div ng-view=""></div>
+    </div>
+
+
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script>
+        var myApp = angular.module('myApp', ['ngRoute']);
+
+        myApp.config(function ($routeProvider) {
+            $routeProvider.when('/', {
+                controller: 'dogsController',
+                templateUrl: 'dogs.html'
+            }).when('/cats', {
+                controller: 'catsController',
+                templateUrl: 'cats.html'
+            }).otherwise({ redirectTo: '/' });
+
+        });
+
+        myApp.controller('dogsController', function ($scope) {
+            $scope.dogs = [
+                { name: 'Smash', type: 'Dalmatian', color: 'Brown' },
+                { name: 'Ralph', type: 'Chihuahua', color: 'Gray' },
+                { name: 'Ninny', type: 'Golden Retriever', color: 'Black' },
+                { name: 'Dart', type: 'Bulldog', color: 'White' },
+                { name: 'Oscar', type: 'Chihuahua', color: 'Gray' },
+                { name: 'Rufus', type: 'Bulldog', color: 'Black' }
+            ];
+            $scope.addDog = function () {
+                $scope.dogs.push(
+                    {
+                        name: $scope.newDog.name,
+                        type: $scope.newDog.type,
+                        color: $scope.newDog.color
+                    })
+            }
+
+        });
+
+        myApp.controller('catsController', function ($scope) {
+            $scope.cats = [
+                { name: 'Dizzy', type: 'Siamese', color: 'Brown' },
+                { name: 'Scroungy', type: 'Burmese', color: 'Gray' },
+                { name: 'Fluffy', type: 'Persian', color: 'Black' },
+                { name: 'Daisy', type: 'Burmese', color: 'White' },
+                { name: 'Bermuda', type: 'Siamese', color: 'Gray' },
+                { name: 'Klondike', type: 'Burmese', color: 'Black' }
+            ];
+
+        });
+
+    </script>
+</body>
+</html>
