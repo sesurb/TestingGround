@@ -1,0 +1,31 @@
+
+    <div class="" ng-controller="dogsController">
+        <div>
+            Filter: <input type="text" ng-model="filtertext" />
+        </div>
+        <table>
+            <tr ng-if="filtertext">
+                <td colspan="3">Current Filter: {{filtertext}}</td>
+            </tr>
+            <tr>
+                <td>NAME</td>
+                <td>TYPE</td>
+                <td>COLOR</td>
+            </tr>
+            <tr ng-repeat="dog in dogs | filter:filtertext | orderBy:'name'" ng-class-odd="'oddrow'">
+
+                <td>{{dog.name | uppercase}}</td>
+                <td>{{dog.type}}</td>
+                <td>{{dog.color}}</td>
+            </tr>
+        </table>
+        <br/><br/>
+        <h2>Add A dog</h2>
+        <br/>
+        Name: <input type="text" ng-model="newDog.name" /><br/>
+        Type: <input type="text" ng-model="newDog.type" /><br />
+        Color: <input type="text" ng-model="newDog.color" /><br/>
+        <button ng-click="addDog()">Add Dog</button>
+        <br/><br /><br />
+        <a href="#/cats">Cats</a>
+    </div>
